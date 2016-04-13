@@ -21,5 +21,5 @@ node {
    
    stage 'Trigger Downstream'
    // Trigger downstream projects.
-   build job: 'can-i-kayak-baltimore', wait: false
+   build job: '../can-i-kayak-baltimore/jenkins', wait: false
 }
