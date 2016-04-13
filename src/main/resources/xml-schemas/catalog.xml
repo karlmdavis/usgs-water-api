@@ -1,0 +1,13 @@
+<!DOCTYPE catalog
+    PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+	prefer="public">
+
+	<!-- FIXME: Download all referenced schemas and place them into a directory 
+		structure that would work here. -->
+	<!-- 
+	<rewriteSystem systemIdStartString="http://"
+		rewritePrefix="src/main/resources/xml-schemas/" />
+	-->
+
+</catalog>

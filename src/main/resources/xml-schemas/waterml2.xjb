@@ -1,0 +1,105 @@
+<bindings version="2.0" xmlns="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/geometryPrimitives.xsd"
+		node="/xs:schema">
+		<bindings
+			node="//xs:group[@name='PointGrid']/xs:sequence/xs:element[@name='rows']">
+			<property name="pointGridRows" />
+		</bindings>
+	</bindings>
+
+	<bindings schemaLocation="http://www.w3.org/1999/xlink.xsd"
+		node="/xs:schema">
+		<bindings node="//xs:group[@name='arcModel']//xs:element">
+			<property name="arcModelTitle" />
+		</bindings>
+
+		<bindings
+			node="//xs:attributeGroup[@name='locatorAttrs']//xs:attribute[@ref='xlink:title']">
+			<property name="locatorTitle" />
+		</bindings>
+	</bindings>
+
+	<bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/datums.xsd"
+		node="/xs:schema">
+		<bindings node="//xs:element[@name='secondDefiningParameter']">
+			<class name="secondDefiningParameterWrapper" />
+		</bindings>
+		<bindings node="//xs:element[@name='ellipsoid']">
+			<factoryMethod name="ellipsoidProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='primeMeridian']">
+			<factoryMethod name="primeMeridianProperty" />
+		</bindings>
+	</bindings>
+
+	<bindings
+		schemaLocation="http://schemas.opengis.net/gml/3.2.1/coordinateReferenceSystems.xsd"
+		node="/xs:schema">
+		<bindings node="//xs:element[@name='sphericalCS']">
+			<factoryMethod name="sphericalCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='temporalDatum']">
+			<factoryMethod name="temporalDatumProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='cartesianCS']">
+			<factoryMethod name="cartesianCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='affineCS']">
+			<factoryMethod name="affineCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='polarCS']">
+			<factoryMethod name="polarCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='imageDatum']">
+			<factoryMethod name="imageDatumProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='ellipsoidalCS']">
+			<factoryMethod name="ellipsoidalCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='userDefinedCS']">
+			<factoryMethod name="userDefinedCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='linearCS']">
+			<factoryMethod name="linearCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='timeCS']">
+			<factoryMethod name="timeCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='conversion']">
+			<factoryMethod name="conversionProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='verticalDatum']">
+			<factoryMethod name="verticalDatumProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='cylindricalCS']">
+			<factoryMethod name="cylindricalCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='verticalCS']">
+			<factoryMethod name="verticalCSProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='geodeticDatum']">
+			<factoryMethod name="geodeticDatumProperty" />
+		</bindings>
+		<bindings node="//xs:element[@name='engineeringDatum']">
+			<factoryMethod name="engineeringDatumProperty" />
+		</bindings>
+	</bindings>
+
+	<bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/coordinateSystems.xsd"
+		node="/xs:schema">
+	</bindings>
+
+	<bindings
+		schemaLocation="http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd"
+		node="/xs:schema">
+		<bindings node="//xs:element[@name='parameterValue']">
+			<factoryMethod name="abstractParameterValue" />
+		</bindings>
+		<bindings node="//xs:element[@name='operationParameter']">
+			<factoryMethod name="operationParameterProperty" />
+		</bindings>
+	</bindings>
+
+</bindings>
