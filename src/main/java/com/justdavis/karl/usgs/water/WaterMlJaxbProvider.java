@@ -9,13 +9,8 @@ import net.opengis.waterml._2.ObjectFactory;
 
 @Provider
 public final class WaterMlJaxbProvider implements ContextResolver<JAXBContext> {
-	public WaterMlJaxbProvider() {
-		System.out.println("context created");
-	}
-
 	@Override
 	public JAXBContext getContext(Class<?> type) {
-		System.err.println("context called for: " + type);
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
 			return jaxbContext;
