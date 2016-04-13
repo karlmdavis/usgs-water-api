@@ -1,5 +1,7 @@
 package com.justdavis.karl.usgs.water;
 
+import javax.measure.quantity.Temperature;
+import javax.measure.unit.SI;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation.Builder;
@@ -11,6 +13,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.glassfish.jersey.client.ClientConfig;
+import org.jscience.physics.amount.Amount;
 import org.w3c.dom.Element;
 
 import net.opengis.waterml._2.CollectionType;
@@ -24,7 +27,7 @@ import net.opengis.waterml._2.ObjectFactory;
  * Instantaneous Values Web Service</a>.
  */
 public final class InstantValuesClient {
-	public String getMostRecentWaterTemperature(SiteNumber siteNumber) {
+	public Amount<Temperature> getMostRecentWaterTemperature(SiteNumber siteNumber) {
 		ClientConfig config = new ClientConfig();
 		config.register(WaterMlJaxbProvider.class);
 		Client client = ClientBuilder.newClient(config);
@@ -53,7 +56,11 @@ public final class InstantValuesClient {
 			MeasurementTimeseriesType measurement = jaxbUnmarshaller
 					.unmarshal(resultElement.getFirstChild(), MeasurementTimeseriesType.class).getValue();
 			Point resultDataPoint = measurement.getPoint().get(1);
-			return "" + resultDataPoint.getMeasurementTVP().getValue().getValue().getValue();
+			
+			double temperatureCelsiusValue = resultDataPoint.getMeasurementTVP().getValue().getValue().getValue();
+			Amount<Temperature> temperature = Amount.valueOf(temperatureCelsiusValue, SI.CELSIUS);
+
+			return temperature;
 		} catch (JAXBException e) {
 			throw new IllegalStateException(e);
 		}
