@@ -13,5 +13,13 @@ node {
    // Mark the code build 'stage'....
    stage 'Build'
    // Run the maven build
-   sh "${mvnHome}/bin/mvn clean install"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean install"
+   
+   stage 'Archive'
+   step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
+   step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+   
+   stage 'Trigger Downstream'
+   // Trigger downstream projects.
+   build job: 'can-i-kayak-baltimore', wait: false
 }
